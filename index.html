@@ -1,0 +1,36 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Grooming System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>Dog Grooming System</h1>
+
+    <section id="owner-section">
+        <h2>Owner</h2>
+        <form id="owner-form">
+            <input type="text" id="ownerPhone" placeholder="Owner Phone">
+            <input type="text" id="ownerName" placeholder="Owner Name">
+            <button type="button" onclick="addOwner()">Add Owner</button>
+        </form>
+        <div id="owners-list"></div>
+    </section>
+
+    <section id="dog-section">
+        <h2>Dog</h2>
+        <form id="dog-form">
+            <input type="text" id="dogName" placeholder="Dog Name">
+            <input type="text" id="dogBreed" placeholder="Dog Breed">
+            <input type="text" id="ownerPhoneForDog" placeholder="Owner Phone">
+            <button type="button" onclick="addDog()">Add Dog</button>
+        </form>
+        <div id="dogs-list"></div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
