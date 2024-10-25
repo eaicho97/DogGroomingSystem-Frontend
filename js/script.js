@@ -1,7 +1,6 @@
-// Definir la URL del API Gateway
+
 const API_GATEWAY_URL = 'http://localhost:8762';
 
-// Función para agregar un nuevo propietario
 async function addOwner() {
     const ownerPhone = document.getElementById('ownerPhone').value;
     const ownerName = document.getElementById('ownerName').value;
@@ -20,7 +19,7 @@ async function addOwner() {
 
         if (response.ok) {
             alert('Owner added successfully');
-            loadOwners(); // Cargar la lista de propietarios actualizada
+            loadOwners();
         } else {
             const error = await response.json();
             alert(`Failed to add owner: ${error.message}`);
@@ -33,7 +32,7 @@ async function addOwner() {
 
 async function loadOwners() {
     try {
-        const response = await fetch(`${API_GATEWAY_URL}/owner/api/v1/ownersa`, {
+        const response = await fetch(`${API_GATEWAY_URL}/owner/api/v1/owners`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -110,7 +109,7 @@ async function loadDogs() {
 
 
 window.onload = function() {
-    loadOwners(); // Cargar la lista de propietarios al inicio
-    loadDogs(); // Cargar la lista de perros al inicio
+    loadOwners(); 
+    loadDogs();
 };
 
