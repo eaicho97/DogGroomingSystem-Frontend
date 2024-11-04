@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogs Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Fixed Navigation Header -->
+    <header class="navigation">
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="owner.html" class="nav-button">Owners</a>
+        <a href="appointments.html" class="nav-button">Appointments</a>
+    </header>
+
+    <!-- Main Content -->
+    <div class="dogs-container">
+        <h1>Manage Dogs</h1>
+
+        <!-- Dog Registration Form -->
+        <form id="dog-form">
+            <input type="text" id="dogName" placeholder="Dog Name" required>
+            <input type="text" id="dogBreed" placeholder="Dog Breed" required>
+            <input type="text" id="ownerPhone" placeholder="Owner Phone" required>
+            <button type="button" onclick="addDog()">Add Dog</button>
+        </form>
+
+        <!-- Dogs Table -->
+        <table id="dogs-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Breed</th>
+                    <th>Owner Phone</th>
+                </tr>
+            </thead>
+            <tbody id="dogs-list"></tbody>
+        </table>
+
+        <!-- Search Dog by ID -->
+<div id="search-dog">
+    <input type="text" id="searchDogId" placeholder="Search Dog by ID">
+    <button type="button" onclick="searchDog()">Search</button>
+</div>
+
+<div id="edit-dog" style="display: none;">
+    <h3>Edit Dog</h3>
+    <input type="text" id="editDogName" placeholder="Dog Name">
+    <input type="text" id="editDogBreed" placeholder="Dog Breed">
+    <input type="text" id="editOwnerPhone" placeholder="Owner Phone">
+    <button type="button" onclick="updateDog()">Update Dog</button>
+</div>
+    </div>
+
+    <script src="js/dog.js"></script>
+</body>
+</html>
