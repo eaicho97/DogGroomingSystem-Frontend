@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owners Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Fixed Navigation Header -->
+    <header class="navigation">
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="dogs.html" class="nav-button">Dogs</a>
+        <a href="appointments.html" class="nav-button">Appointments</a>
+    </header>
+
+    <!-- Main Content -->
+    <div class="owner-container">
+        <h1>Manage Owners</h1>
+        
+        <!-- Owner Form -->
+        <form id="owner-form">
+            <input type="text" id="ownerPhone" placeholder="Owner Phone">
+            <input type="text" id="ownerName" placeholder="Owner Name">
+            <button type="button" onclick="addOwner()">Add Owner</button>
+        </form>
+
+        <!-- Owners Table -->
+        <table id="owners-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+            <tbody id="owners-list"></tbody>
+        </table>
+
+        <!-- Search Owner by ID -->
+<div id="search-owner">
+    <input type="text" id="searchOwnerId" placeholder="Search Owner by ID">
+    <button type="button" onclick="searchOwner()">Search</button>
+</div>
+
+<!-- Editable Owner Info for Update -->
+<div id="edit-owner" style="display: none;">
+    <h3>Edit Owner</h3>
+    <input type="text" id="editOwnerName" placeholder="Owner Name">
+    <input type="text" id="editOwnerPhone" placeholder="Owner Phone">
+    <button type="button" onclick="updateOwner()">Update Owner</button>
+</div>
+    </div>
+
+    <script src="js/owner.js"></script>
+</body>
+</html>

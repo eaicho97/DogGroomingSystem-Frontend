@@ -1,14 +1,10 @@
-
 const API_GATEWAY_URL = 'http://localhost:8762';
 
 async function addOwner() {
     const ownerPhone = document.getElementById('ownerPhone').value;
     const ownerName = document.getElementById('ownerName').value;
-
-    const ownerData = {
-        phone: ownerPhone,
-        name: ownerName
-    };
+    
+    const ownerData = { phone: ownerPhone, name: ownerName };
 
     try {
         const response = await fetch(`${API_GATEWAY_URL}/owner/api/v1/owners`, {
@@ -18,38 +14,53 @@ async function addOwner() {
         });
 
         if (response.ok) {
-            alert('Owner added successfully');
+            alert('Dueño agregado exitosamente');
             loadOwners();
         } else {
-            const error = await response.json();
-            alert(`Failed to add owner: ${error.message}`);
+            alert('Error al agregar dueño');
         }
     } catch (error) {
-        console.error('Error adding owner:', error);
-        alert('An error occurred while adding the owner.');
+        console.error('Error:', error);
     }
 }
 
-async function loadOwners() {
+async function modifyOwner() {
+    const ownerPhone = document.getElementById('ownerPhone').value;
+    const newOwnerName = prompt("Introduce el nuevo nombre del dueño:");
+
     try {
-        const response = await fetch(`${API_GATEWAY_URL}/owner/api/v1/owners`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
+        const response = await fetch(`${API_GATEWAY_URL}/owner/api/v1/owners/${ownerPhone}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: newOwnerName })
         });
 
-        if (response.ok) {
-            const owners = await response.json();
-            const ownersList = document.getElementById('owners-list');
-            ownersList.innerHTML = owners.map(owner => 
-                `<p>${owner.name} - ${owner.phone}</p>`
-            ).join('');
-        } else {
-            const error = await response.json();
-            alert(`Failed to load owners: ${error.message}`);
-        }
+        if (response.ok) alert('Dueño modificado');
     } catch (error) {
-        console.error('Error loading owners:', error);
-        alert('An error occurred while loading the owners.');
+        console.error('Error al modificar dueño:', error);
+    }
+}
+
+async function deleteOwner() {
+    const ownerPhone = document.getElementById('ownerPhone').value;
+
+    try {
+        await fetch(`${API_GATEWAY_URL}/owner/api/v1/owners/${ownerPhone}`, { method: 'DELETE' });
+        alert('Dueño eliminado');
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function searchOwner() {
+    const ownerPhone = document.getElementById('ownerPhone').value;
+
+    try {
+        const response = await fetch(`${API_GATEWAY_URL}/owner/api/v1/owners/${ownerPhone}`);
+        const owner = await response.json();
+        alert(`Dueño: ${owner.name}, Teléfono: ${owner.phone}`);
+    } catch (error) {
+        console.error('Error:', error);
     }
 }
 
@@ -58,11 +69,7 @@ async function addDog() {
     const dogBreed = document.getElementById('dogBreed').value;
     const ownerPhoneForDog = document.getElementById('ownerPhoneForDog').value;
 
-    const dogData = {
-        name: dogName,
-        breed: dogBreed,
-        ownerPhone: ownerPhoneForDog
-    };
+    const dogData = { name: dogName, breed: dogBreed, ownerPhone: ownerPhoneForDog };
 
     try {
         const response = await fetch(`${API_GATEWAY_URL}/dog/api/v1/dogs`, {
@@ -71,45 +78,31 @@ async function addDog() {
             body: JSON.stringify(dogData)
         });
 
-        if (response.ok) {
-            alert('Dog added successfully');
-            loadDogs(); 
-        } else {
-            const error = await response.json();
-            alert(`Failed to add dog: ${error.message}`);
-        }
+        if (response.ok) alert('Perro agregado');
     } catch (error) {
-        console.error('Error adding dog:', error);
-        alert('An error occurred while adding the dog.');
+        console.error('Error:', error);
     }
 }
 
-async function loadDogs() {
+async function scheduleAppointment() {
+    const dogName = document.getElementById("appointmentDogName").value;
+    const ownerPhone = document.getElementById("appointmentOwnerPhone").value;
+    const date = document.getElementById("appointmentDate").value;
+
     try {
-        const response = await fetch(`${API_GATEWAY_URL}/dog/api/v1/dogs`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
+        const response = await fetch(`${API_GATEWAY_URL}/appointments`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ dogName, ownerPhone, date })
         });
 
-        if (response.ok) {
-            const dogs = await response.json();
-            const dogsList = document.getElementById('dogs-list');
-            dogsList.innerHTML = dogs.map(dog => 
-                `<p>${dog.name} (Breed: ${dog.breed}, Owner Phone: ${dog.ownerPhone})</p>`
-            ).join('');
-        } else {
-            const error = await response.json();
-            alert(`Failed to load dogs: ${error.message}`);
-        }
+        if (response.ok) alert('Cita agendada exitosamente');
     } catch (error) {
-        console.error('Error loading dogs:', error);
-        alert('An error occurred while loading the dogs.');
+        console.error('Error al agendar cita:', error);
     }
 }
 
-
 window.onload = function() {
-    loadOwners(); 
+    loadOwners();
     loadDogs();
 };
-
