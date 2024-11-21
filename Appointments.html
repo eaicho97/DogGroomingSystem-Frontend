@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments Management</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navigation">
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="dogs.html" class="nav-button">Dogs</a>
+        <a href="owner.html" class="nav-button">Owners</a>
+    </header>
+
+    <div class="appointments-container">
+        <h1>Manage Appointments</h1>
+
+        <!-- Formulario para agregar citas -->
+        <form id="appointment-form">
+            <label for="dogId">Dog ID:</label>
+            <select id="dogId" required>
+                <!-- Las opciones se llenarán dinámicamente desde la base de datos -->
+            </select>
+
+            <label for="ownerId">Owner ID:</label>
+            <select id="ownerId" required>
+                <!-- Las opciones se llenarán dinámicamente desde la base de datos -->
+            </select>
+
+            <label for="appointmentDate">Date:</label>
+            <input type="date" id="appointmentDate" required>
+
+            <label for="appointmentTime">Time:</label>
+            <input type="time" id="appointmentTime" required>
+
+            <button type="button" onclick="addAppointment()">Add Appointment</button>
+        </form>
+
+        <!-- Tabla para listar citas -->
+        <table id="appointments-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Dog ID</th>
+                    <th>Owner ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="appointments-list"></tbody>
+        </table>
+
+        <!-- Búsqueda de citas -->
+        <div id="search-appointment">
+            <input type="text" id="searchAppointmentId" placeholder="Search Appointment by ID">
+            <button type="button" onclick="searchAppointment()">Search</button>
+        </div>
+
+        <!-- Edición de citas -->
+        <div id="edit-appointment" style="display: none;">
+            <h3>Edit Appointment</h3>
+            <label for="editDogId">Dog ID:</label>
+            <select id="editDogId" required>
+                <!-- Opciones dinámicas -->
+            </select>
+
+            <label for="editOwnerId">Owner ID:</label>
+            <select id="editOwnerId" required>
+                <!-- Opciones dinámicas -->
+            </select>
+
+            <label for="editAppointmentDate">Date:</label>
+            <input type="date" id="editAppointmentDate" required>
+
+            <label for="editAppointmentTime">Time:</label>
+            <input type="time" id="editAppointmentTime" required>
+
+            <button type="button" onclick="updateAppointment()">Update Appointment</button>
+        </div>
+    </div>
+
+    <script src="js/appointment.js"></script>
+</body>
+</html>

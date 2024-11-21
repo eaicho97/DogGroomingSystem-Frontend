@@ -188,3 +188,20 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+
+.appointments-container {
+    margin-top: 80px;
+    padding: 20px;
+    background-image: url('/img/appointments.jpg'); /* Imagen de fondo específica para Appointments */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); /* Oscurece la imagen de fondo para mejor contraste */
+}
+
+.appointments-container h1 {
+    color: #4CAF50;
+}
+

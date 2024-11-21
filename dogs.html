@@ -7,18 +7,15 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Fixed Navigation Header -->
     <header class="navigation">
         <a href="index.html" class="nav-button">Home</a>
         <a href="owner.html" class="nav-button">Owners</a>
         <a href="appointments.html" class="nav-button">Appointments</a>
     </header>
 
-    <!-- Main Content -->
     <div class="dogs-container">
         <h1>Manage Dogs</h1>
 
-        <!-- Dog Registration Form -->
         <form id="dog-form">
             <input type="text" id="dogName" placeholder="Dog Name" required>
             <input type="text" id="dogBreed" placeholder="Dog Breed" required>
@@ -26,7 +23,6 @@
             <button type="button" onclick="addDog()">Add Dog</button>
         </form>
 
-        <!-- Dogs Table -->
         <table id="dogs-table">
             <thead>
                 <tr>
@@ -39,7 +35,6 @@
             <tbody id="dogs-list"></tbody>
         </table>
 
-        <!-- Search Dog by ID -->
 <div id="search-dog">
     <input type="text" id="searchDogId" placeholder="Search Dog by ID">
     <button type="button" onclick="searchDog()">Search</button>
